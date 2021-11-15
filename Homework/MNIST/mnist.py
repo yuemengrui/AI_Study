@@ -97,5 +97,3 @@ for epoch in range(500):
         torch.save(cnn.state_dict(), "./checkpoints/mnist_{}.pth".format(str(best_acc)))
 
 
-
-# torch.save(cnn.state_dict(), "mnist.pth")
