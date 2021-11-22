@@ -1,7 +1,7 @@
-# *_*coding:utf-8 *_*
+ # *_*coding:utf-8 *_*
 import torch
 import torch.nn as nn
-from torch.autograd import variable
+from torch.autograd import Variable
 import torch.utils.data as Data
 import torchvision
 import matplotlib.pyplot as plt
@@ -28,8 +28,9 @@ train_data = torchvision.datasets.MNIST(
 
 train_loader = Data.DataLoader(dataset=train_data, batch_size=BATCH_SIZE,shuffle=True, num_workers=2)
 test_data = torchvision.datasets.MNIST(root='./mnist', train=False)
-test_x = variable(torch.unsqueeze(test_data.test_data, dim=1)).type(torch.FloatTensor)[:2000]/255.
+test_x = Variable(torch.unsqueeze(test_data.test_data, dim=1)).type(torch.FloatTensor)[:2000]/255.
 test_y = test_data.test_labels[:2000]
+
 
 class CNN(nn.Module):
     def __init__(self):
@@ -66,8 +67,8 @@ loss_func = nn.CrossEntropyLoss()
 
 for epoch in range(EPOCH):
     for step, (x, y) in enumerate(train_loader):
-        b_x = variable(x)
-        b_y = variable(y)
+        b_x = Variable(x)
+        b_y = Variable(y)
 
         output = cnn(b_x)
         loss = loss_func(output, b_y)
