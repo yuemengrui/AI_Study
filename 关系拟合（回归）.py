@@ -1,3 +1,9 @@
+"""
+见证神经网络是如何通过简单的形式将一群数据用一条线条来表示
+或者说
+是如何在数据当中找到他们的关系，然后用神经网络模型来建立一个可以表示他们关系的线条
+"""
+
 import torch
 import torch.nn.functional as F  # 激励函数
 import matplotlib.pyplot as plt
@@ -11,7 +17,7 @@ y = x.pow(2) + 0.2 * torch.rand(x.size())
 # plt.show()
 
 
-# 建立神经网络
+# 建立神经网络（继承torch中的一个神经网络）
 class Net(torch.nn.Module):    # 继承torch的Module
     def __init__(self, n_feature, n_hidden, n_output):
         super(Net, self).__init__()
